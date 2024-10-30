@@ -20,9 +20,9 @@ class LIFOCache(BaseCaching):
             len(self.cache_data) == self.MAX_ITEMS
             and key not in self.cache_data
         ):
-            first_item = list(self.cache_data.keys())[3]
-            del self.cache_data[first_item]
-            print(f"DISCARD: {first_item}")
+            last_item = list(self.cache_data.keys())[self.MAX_ITEMS - 1]
+            del self.cache_data[last_item]
+            print(f"DISCARD: {last_item}")
             self.cache_data.update({key: item})
         else:
             if key in self.cache_data:
