@@ -23,6 +23,8 @@ class FIFOCache(BaseCaching):
             first_item = list(self.cache_data.keys())[0]
             del self.cache_data[first_item]
             print(f"DISCARD: {first_item}")
-            self.cache_data[key] = item
+            self.cache_data.update({key: item})
         else:
-            self.cache_data[key] = item
+            if key in self.cache_data:
+                del self.cache_data[key]
+            self.cache_data.update({key: item})
