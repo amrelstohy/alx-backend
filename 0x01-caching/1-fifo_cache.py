@@ -28,3 +28,11 @@ class FIFOCache(BaseCaching):
             if key in self.cache_data:
                 del self.cache_data[key]
             self.cache_data.update({key: item})
+
+    def get(self, key):
+        """get method"""
+        if not key:
+            return
+        item = self.cache_data.get(key)
+        if item:
+            return item
